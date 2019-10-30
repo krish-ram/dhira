@@ -1,0 +1,14 @@
+<h1>{{ header }}</h1>
+
+<!-- <div>
+  <ul>
+    <li *ngFor="let country of countryList">
+      <span (click)="setCountrySelected(country)"> {{ country }}</span>
+    </li>
+  </ul>
+</div> -->
+<p-dropdown [options]="countryList" [(ngModel)]="selectedCountry"></p-dropdown>
+
+<div *ngIf="selectedCountry == 'India'">
+  This is my country
+</div>

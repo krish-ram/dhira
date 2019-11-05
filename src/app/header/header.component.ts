@@ -9,27 +9,44 @@ import {
   SimpleChange,
   SimpleChanges
 } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-header",
   templateUrl: "./header.component.html",
   styleUrls: ["./header.component.scss"]
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   @Input() searchTerm: string;
   @Output() emitSearch = new EventEmitter();
+  @Output() pageName = new EventEmitter();
+  @Output() dropdownVal = new EventEmitter();
 
   placeholder = "This is a placeholder";
 
-  constructor() {}
+  devices = ["sunday", "monday", "tuesday", "wednesday"];
+  constructor(private router: Router) {}
 
-  getName = function(name) {
-    console.log(this.searchTerm);
-    console.log(name);
-    this.searchTerm = name;
-  };
+  ngOnInit() {
+    this.dropdownVal.emit(this.devices[1]);
+  }
+  // getName = function(name) {
+  //   console.log(this.searchTerm);
+  //   console.log(name);
+  //   this.searchTerm = name;
+  // };
 
   alert = function() {
     this.emitSearch.emit(this.searchTerm);
   };
+
+  onChange(dropdownEevent) {
+    // console.log(dropdownEevent);
+    this.router.navigate(["/products/today/" + dropdownEevent.target.value]);
+    this.dropdownVal.emit(dropdownEevent.target.value);
+  }
+  pageChange(page) {
+    this.router.navigate(["/" + page]);
+    // this.pageName.emit(page);
+  }
 }

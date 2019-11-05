@@ -1,5 +1,4 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
   <button
     class="navbar-toggler"
     type="button"
@@ -14,39 +13,52 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#"
+      <li class="nav-item active" (click)="pageChange('Home')">
+        <a
+          class="nav-link"
+          [routerLink]="['/index']"
+          routerLinkActive="router-link-active"
           >Home <span class="sr-only">(current)</span></a
         >
       </li>
+
+      <!-- <li class="nav-item" (click)="pageChange('About')"> -->
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item dropdown">
         <a
-          class="nav-link dropdown-toggle"
-          href="#"
-          id="navbarDropdown"
-          role="button"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
+          class="nav-link"
+          [routerLink]="['/about']"
+          routerLinkActive="router-link-active"
+          >About</a
         >
-          Dropdown
+      </li>
+
+      <li class="nav-item" (click)="pageChange('content')">
+        <a class="nav-link" id="navbarDropdown" role="button">
+          Content
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true"
-          >Disabled</a
-        >
+
+      <li class="nav-item" (click)="pageChange('Contact')">
+        <a class="nav-link " tabindex="-1">Contact</a>
       </li>
+
+      <li class="nav-item" (click)="pageChange('orders')">
+        <a class="nav-link " tabindex="-1">Orders</a>
+      </li>
+
+      <li class="nav-item" (click)="pageChange('products')">
+        <a class="nav-link " tabindex="-1">Products</a>
+      </li>
+
+      <li class="nav-item" (click)="pageChange('products/today/sunday')">
+        <a class="nav-link " tabindex="-1">Today</a>
+      </li>
+
+      <select (change)="onChange($event)">
+        <option *ngFor="let i of devices">{{ i }}</option>
+      </select>
     </ul>
+
     <form class="form-inline my-2 my-lg-0">
       <input
         class="form-control mr-sm-2"
@@ -56,7 +68,7 @@
         [placeholder]="placeholder"
         aria-label="Search"
       />
-      <!-- (ngModelChange)="getName($event)" -->
+
       <button
         class="btn btn-outline-success my-2 my-sm-0"
         type="button"

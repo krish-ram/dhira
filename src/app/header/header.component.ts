@@ -10,6 +10,7 @@ import {
   SimpleChanges
 } from "@angular/core";
 import { Router } from "@angular/router";
+import { AppService } from "../services/app.service";
 
 @Component({
   selector: "app-header",
@@ -25,10 +26,14 @@ export class HeaderComponent implements OnInit {
   placeholder = "This is a placeholder";
 
   devices = ["sunday", "monday", "tuesday", "wednesday"];
-  constructor(private router: Router) {}
+  constructor(private router: Router, private appServc: AppService) {}
 
   ngOnInit() {
     this.dropdownVal.emit(this.devices[1]);
+
+    this.appServc.getConfig().subscribe(response => {
+      console.log(response);
+    });
   }
   // getName = function(name) {
   //   console.log(this.searchTerm);

@@ -14,6 +14,10 @@ import { HomeComponent } from "./home/home.component";
 import { AboutComponent } from "./about/about.component";
 import { ContactComponent } from "./contact/contact.component";
 import { RouterModule } from "@angular/router";
+import { FilterPipe } from "./pipes/search.pipe";
+import { SearchPipe } from "./search.pipe";
+import { HttpClientModule } from "@angular/common/http";
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,11 +26,14 @@ import { RouterModule } from "@angular/router";
     ContentComponent,
     HomeComponent,
     AboutComponent,
-    ContactComponent
+    ContactComponent,
+    FilterPipe,
+    SearchPipe
   ],
   imports: [
     FormsModule,
     BrowserModule,
+    HttpClientModule,
     // AppRoutingModule,
     RouterModule.forRoot(routes),
     DropdownModule,

@@ -1,1 +1,16 @@
-<p>home works!</p>
+<input type="text" [(ngModel)]="search" name="search" />
+<ul>
+  <li *ngFor="let country of countries | filter: search">
+    {{ country | uppercase }}
+  </li>
+</ul>
+
+<input type="text" [(ngModel)]="name" name="" id="" />
+
+<input type="email" [(ngModel)]="email" name="" id="" />
+
+<input type="tel" [(ngModel)]="phone" name="" id="" />
+
+<textarea name="" id="" [(ngModel)]="msg" cols="30" rows="10"></textarea>
+
+<button type="button" (click)="submit()">Submit</button>

@@ -25,6 +25,11 @@ export class AppService {
   getStubData() {
     return this.http.get(this.stubUrl);
   }
+
+  getLoginData() {
+    return this.http.get(this.stubUrl);
+  }
+
   postData(name, email, phonenumber, msg) {
     return this.http.post(this.postUrl, {
       name: name,

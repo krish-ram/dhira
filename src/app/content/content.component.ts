@@ -54,4 +54,8 @@ export class ContentComponent implements OnInit, OnChanges, AfterViewInit {
 
     this.selectedCountry = country;
   }
+
+  change(event) {
+    console.log(event);
+  }
 }

@@ -1,1 +1,49 @@
-<p>contact works!</p>
+<form #form="ngForm" novalidate>
+  <div class="alert" *ngIf="msg">Eror {{ msg }}</div>
+  <label>count:</label>
+  <input
+    type="text"
+    name="count"
+    [(ngModel)]="count"
+    required
+    max="5"
+    #countDir="ngModel"
+  />
+  <div class="text-danger" *ngIf="countDir.invalid">
+    Please enter some value
+  </div>
+  <!-- <pre>invalid: {{ countDir.invalid }}</pre> -->
+
+  <fieldset ngModelGroup="nested">
+    <label>foo:</label>
+    <input
+      type="text"
+      name="foo"
+      [(ngModel)]="foo"
+      required
+      minlength="2"
+      maxlength="10"
+      #fooDir="ngModel"
+    />
+
+    <pre>errors: {{ fooDir.errors | json }}</pre>
+
+    <label>bar:</label>
+    <input
+      type="email"
+      name="bar"
+      [(ngModel)]="bar"
+      required
+      #barDir="ngModel"
+    />
+    <pre>errors: {{ barDir.invalid | json }}</pre>
+  </fieldset>
+
+  <button type="button" [disabled]="form.invalid">submit</button>
+
+  <pre>form.value: {{ form | json }}</pre>
+  <pre>form.errors: {{ form.errors | json }}</pre>
+  <pre>form.status: {{ form.status | json }}</pre>
+  <pre>form.dirty:{{ form.dirty | json }}</pre>
+</form>
+<!---->

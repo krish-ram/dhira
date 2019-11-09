@@ -1,0 +1,33 @@
+.yellow-border::before {
+  content: "";
+  position: absolute;
+  -webkit-clip-path: polygon(0 100%, 0 0, 100% 0);
+  clip-path: polygon(0 100%, 0 0, 100% 0);
+  height: 15rem;
+  width: 8rem;
+  background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    right top,
+    from(#ffe32f),
+    color-stop(#f8dd2d),
+    color-stop(#f2d72a),
+    color-stop(#ebd128),
+    to(#e5cb26)
+  );
+  background-image: linear-gradient(
+    to right top,
+    #ffe32f,
+    #f8dd2d,
+    #f2d72a,
+    #ebd128,
+    #e5cb26
+  );
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.box {
+  border: 1px solid;
+}

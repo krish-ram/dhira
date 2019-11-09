@@ -1,6 +1,6 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { routes } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -17,6 +17,12 @@ import { RouterModule } from "@angular/router";
 import { FilterPipe } from "./pipes/search.pipe";
 import { SearchPipe } from "./search.pipe";
 import { HttpClientModule } from "@angular/common/http";
+import { DraggableDirective } from "./directives/drag.directive";
+import { StoreModule } from "@ngrx/store";
+import { reducers, effects } from "./state/main-state";
+import { EffectsModule } from "@ngrx/effects";
+import { environment } from "src/environments/environment.prod";
+import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 
 @NgModule({
   declarations: [
@@ -28,16 +34,24 @@ import { HttpClientModule } from "@angular/common/http";
     AboutComponent,
     ContactComponent,
     FilterPipe,
-    SearchPipe
+    SearchPipe,
+    DraggableDirective
   ],
   imports: [
     FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     HttpClientModule,
     // AppRoutingModule,
     RouterModule.forRoot(routes),
     DropdownModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    StoreModule.forRoot(reducers),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25, // Retains last 25 states
+      logOnly: environment.production // Restrict extension to log-only mode
+    }),
+    EffectsModule.forRoot(effects)
   ],
   exports: [],
   providers: [],

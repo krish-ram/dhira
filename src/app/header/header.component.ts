@@ -11,6 +11,9 @@ import {
 } from "@angular/core";
 import { Router } from "@angular/router";
 import { AppService } from "../services/app.service";
+import { DataService } from "../services/data.service";
+import { Store } from "@ngrx/store";
+import { saveHeader } from "../state/action/app.action";
 
 @Component({
   selector: "app-header",
@@ -26,7 +29,12 @@ export class HeaderComponent implements OnInit {
   placeholder = "This is a placeholder";
 
   devices = ["sunday", "monday", "tuesday", "wednesday"];
-  constructor(private router: Router, private appServc: AppService) {}
+  constructor(
+    private router: Router,
+    private appServc: AppService,
+    private dataSrvc: DataService,
+    private store: Store<any>
+  ) {}
 
   ngOnInit() {
     this.dropdownVal.emit(this.devices[1]);
@@ -42,7 +50,11 @@ export class HeaderComponent implements OnInit {
   // };
 
   alert = function() {
-    this.emitSearch.emit(this.searchTerm);
+    console.log(this.searchTerm);
+    this.store.dispatch(saveHeader({ payload: { value: this.searchTerm } }));
+
+    // this.dataSrvc.setValue(this.searchTerm);
+    // this.emitSearch.emit(this.searchTerm);
   };
 
   onChange(dropdownEevent) {

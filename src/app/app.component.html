@@ -1,18 +1,21 @@
-<app-header
-  [searchTerm]="'Ram'"
-  (emitSearch)="getValue($event)"
-  (pageName)="page($event)"
-  (dropdownVal)="dropdownValue = $event"
-></app-header>
-<!-- {{ dropdownValue }}
+<!-- <app-progressbar>  </app-progressbar> -->
+<div>
+  <app-header
+    [searchTerm]="'Ram'"
+    (emitSearch)="getValue($event)"
+    (pageName)="page($event)"
+    (dropdownVal)="dropdownValue = $event"
+  ></app-header>
+  <!-- {{ dropdownValue }}
 <app-home *ngIf="pageName == 'Home'"></app-home>
 <app-about *ngIf="pageName == 'About'"></app-about>
 <app-content [header]="title" *ngIf="pageName == 'Content'"></app-content>
 <app-contact *ngIf="pageName == 'Contact'"></app-contact> -->
-<div class="content">
-  <div class="col-md-3">
-    <router-outlet></router-outlet>
+  <div class="content">
+    <div class="col-md-3">
+      <router-outlet></router-outlet>
+    </div>
   </div>
-</div>
 
-<app-footer></app-footer>
+  <app-footer></app-footer>
+</div>

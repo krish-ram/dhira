@@ -1,6 +1,8 @@
 import { Component } from "@angular/core";
 import { Router } from "@angular/router";
 import { DataService } from "./services/data.service";
+import { Store } from "@ngrx/store";
+import { login } from "./state/action/login.action";
 
 @Component({
   selector: "app-sample-root",
@@ -9,13 +11,18 @@ import { DataService } from "./services/data.service";
   providers: [DataService]
 })
 export class AppComponent {
-  constructor(private router: Router, private dataSrvc: DataService) {}
+  constructor(
+    private router: Router,
+    private dataSrvc: DataService,
+    private store: Store<any>
+  ) {}
   title = "sampleApp";
   search = "RAM";
   pageName = "Home";
   dropdownValue = 100;
 
   ngOnInit() {
+    this.store.dispatch(login());
     this.dataSrvc.setValue(122);
     console.log(this.dataSrvc.getValue());
   }

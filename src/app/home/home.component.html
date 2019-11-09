@@ -1,9 +1,9 @@
 <input type="text" [(ngModel)]="search" name="search" />
-<ul>
-  <li *ngFor="let country of countries | filter: search">
+<!-- <ul>
+  <li *ngFor="let country of countries">
     {{ country | uppercase }}
   </li>
-</ul>
+</ul> -->
 
 <input type="text" [(ngModel)]="name" name="" id="" />
 
@@ -14,3 +14,7 @@
 <textarea name="" id="" [(ngModel)]="msg" cols="30" rows="10"></textarea>
 
 <button type="button" (click)="submit()">Submit</button>
+
+<!-- <h1>{{ data | json }}</h1> -->
+
+<h1>Welcome {{ userData.userName }}</h1>
